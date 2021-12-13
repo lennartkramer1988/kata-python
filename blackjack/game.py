@@ -4,3 +4,10 @@ values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eig
           'Queen': 10, 'King': 10, 'Ace': 11}
 
 
+def game():
+    print("Welcome to the game of BlackJack!")
+    return False
+
+
+if __name__ == '__main__':
+    game()

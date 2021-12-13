@@ -1,25 +1,27 @@
-# kata-python
+# 1. Setup
 
-# Verify if you have python 3 installed
+If you already have Python, pip and virtual environments set up you can skip this step.
+
+## Verify if you have python 3 installed
 
 You can try both `python --version` or `python3 --version`
 
-## Download and Install python 3
+### Download and Install python 3
 
 1. You can find a [Python 3.10](https://www.python.org/downloads/release/python-3100/) download suitable for your system.
 2. Using homebrew on a MacOS system `brew install python`
 
-## Install the python package manager pip
+### Install the python package manager pip
 This is the package manager used for python (like maven or gradle)
 1.  `python3 -m pip install -U --force-reinstall pip`
 
-# Setting up virtual environment and installing dependencies
+## Setting up virtual environment and installing dependencies
 
 To prevent packages / project dependencies from being installed for all your projects a virtual environment is required.
 This virtual environment is a fresh python install with no other libraries installed. 
 This helps prevent version conflicts between your projects (project A might use version 1 and project B might use version 2 of the same library)
 
-## Steps
+### Steps
 
 1. Install virtualenv with the pip package manager `pip install virtualenv`
 2. verify your installation `virtualenv --version`
@@ -28,15 +30,131 @@ This helps prevent version conflicts between your projects (project A might use 
 5. Switch to the virtual environment `source venv/bin/activate`
 6. Install all packages in the requirements.txt file `python3 -m pip install -r requirements.txt`
 
+# 2. Python basics
+
+If you already know the basics of python you can skip this section and start the Kata.
+
+## Python basics cheat sheet
 
 
-# Python basics cheat sheet
+### Data types
+
+![Data types](DataTypes.png)
+
+### Lists
+my_list = [1,2,3]
+my_list = ['A string', 23 , 100.232, 'o']
+- `len(my_list)` => 4
+
+my_list = ['one','two','three',4,5]
+- `my_list[0]` => 'one'
+- `my_list[1:]` => ['two', 'three', 4, 5]
+- `my_list[:3]` => ['one', 'two', 'three']
+- `my_list + ['new item']` => ['one', 'two', 'three', 4, 5, 'new item']
+- `my_list` => ['one', 'two', 'three', 4, 5]
+- `my_list = my_list + ['add new item permanently']`
+- `my_list` => ['one', 'two', 'three', 4, 5, 'add new item permanently']
+
+list1 = [1,2,3]
+- `list1.append('append me!')`
+- `list1` => [1, 2, 3, 'append me!']
+- `list1.reverse()`
+- `list1` => ['append me!', 3, 2, 1]
+- `list1.pop(0)`
+- `list1` => [3, 2, 1]
+- `list1.sort()`
+- `list1` => [1, 2, 3]
 
 
+### Dictionaries
 
+`my_dict = {'key1':'value1','key2':'value2'}`
+- `my_dict['key2']` => 'value2'
 
+`my_dict = {'key1':123,'key2':[12,23,33],'key3':['item0','item1','item2']}`
+- `my_dict['key3']` => ['item0','item1','item2']
+- `my_dict['key3'][0]` => 'item0'
+- `my_dict['key1'] = my_dict['key1'] - 123` => 0
 
-# The Kata - Object Oriented
+```
+d = {}
+d['animal'] = 'Dog'
+d['answer'] = 42
+```
+- `d` => {'animal': 'Dog', 'answer': 42}
+- `d.keys()` => dict_keys(['animal', 'answer'])
+- `d.values()` => dict_values(['Dog', 42])
+- `d.items()` => dict_items([('animal', 'Dog'), ('answer', 42)])
+
+### Tuples
+`t = ('one',2)`
+- `t` =>  ('one',2)
+- `t[0]` => 'one'
+- `t[0] = 'change'` => TypeError: 'tuple' object does not support item assignment
+- `t.append('nope')` => AttributeError: 'tuple' object has no attribute 'append'
+
+### Sets
+`x = set()`
+- `x.add(1)`
+- `x` => {1}
+- `x.add(2)`
+- `x` => {1, 2}
+- `x.add(1)`
+- `x` => {1, 2}
+
+`list1 = [1,1,2,2,3,4,5,6,1,1]`
+- `set(list1)` => {1, 2, 3, 4, 5, 6}
+
+### Booleans - “and/or/not” keywords
+
+`2 <= 2 and 2 < 3` => True
+`1 == 1 or 100 == 1` => True
+`not 1 == 1` => False
+
+### “in” keyword
+
+`list1 = [1,2,3]`
+
+```
+for num in list1:
+    print(num)
+    
+for letter in 'This is a string.':
+    print(letter)
+```
+
+`tup = (1, 2, 3, 4, 5)`
+```
+for t in tup:
+    print(t)
+```
+
+`list2 = [(2, 4), (6, 8), (10, 12)]`
+```
+for tup in list2:
+    print(tup)
+for (t1, t2) in list2:
+    print(t1)
+```
+
+`d = {'k1': 1, 'k2': 2, 'k3': 3}`
+```
+for k, v in d.items():
+    print(k)
+    print(v)
+```
+### if / elif / else
+```
+person = 'John'
+if person == 'Sammy':
+    print('Welcome Sammy!')
+elif person =='George':
+    print('Welcome George!')
+else:
+    print("Welcome, what's your name?")
+```
+
+# 3. The Kata - Blackjack (Object Oriented)
 
 In this kata project you will be creating a Complete BlackJack Card Game in Python.
 
@@ -49,9 +167,9 @@ Here are the requirements:
 * You need to keep track of the player's total money.
 * You need to alert the player of wins, losses, or busts, etc...
 
-And most importantly:
+Additionally:
 
-* **You must use OOP and classes in some portion of your game. You can not just use functions in your game. Use classes to help you define the Deck and the Player's hand. There are many right ways to do this, so explore it well!**
+* **You can use OOP and classes in some portion of your game. Use classes to help you define the Deck and the Player's hand. There are many right ways to do this, so explore it well!**
 
 Feel free to expand this game. Try including multiple players. Try adding in Double-Down and card splits! Remember to you are free to use any resources you want.
 
