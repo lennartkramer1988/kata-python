@@ -143,6 +143,60 @@ for k, v in d.items():
     print(k)
     print(v)
 ```
+
+### *args = tuple, **kwargs = dict
+```
+def myfunc(*args):
+   return sum(args) * .05
+
+myfunc(40, 60, 20)
+6.0 
+
+def myfunc(**kwargs):
+   if 'fruit' in kwargs:
+       print(f"My favorite fruit is {kwargs['fruit']}")  # review String Formatting and f-strings if this syntax is unfamiliar
+
+myfunc(fruit='pineapple')
+My favorite fruit is pineapple
+```
+
+### zip generator
+
+```
+x = [1, 2, 3]
+y = [4, 5, 6]
+
+# Zip the lists together
+list(zip(x, y))
+
+[(1, 4), (2, 5), (3, 6)]
+```
+
+### enumarate() generator
+
+```
+lst = ['a', 'b', 'c']
+
+for number, item in enumerate(lst):
+   print(f'{number} - {item}')
+
+0 - a
+1 - b
+2 - c
+```
+
+### Custom generator
+
+```
+# Generator function for the cube of numbers (power of 3)
+def gencubes(n):
+   for num in range(n):
+       yield num**3
+
+for x in gencubes(10):
+   print(x)
+```
+
 ### if / elif / else
 ```
 person = 'John'
@@ -153,6 +207,71 @@ elif person =='George':
 else:
     print("Welcome, what's your name?")
 ```
+
+### Object oriented
+```
+class Card:
+
+   def __init__(self, suit, rank):
+       self.suit = suit
+       self.rank = rank
+
+   def __str__(self):
+       return self.rank + ' of ' + self.suit
+```
+
+### NumPy Arrays
+
+```
+import numpy as np
+
+random = np.random.rand(5, 5)
+random.max()
+random.min()
+
+np.sqrt(random)
+np.sin(random)
+np.log(random)
+```
+
+my_list = [1, 2, 3]
+```
+print(np.array(my_list))
+print(np.zeros(3))
+print(np.ones((3,3)))
+[1 2 3]
+[0. 0. 0.]
+[[1. 1. 1.]
+[1. 1. 1.]
+[1. 1. 1.]]
+```
+
+print(np.random.rand(5, 5))
+```
+[[0.60762853 0.96551744 0.68542733 0.88297075 0.84795061]
+[0.43626265 0.77330713 0.24258938 0.49060494 0.07266296]
+[0.84188574 0.85882274 0.96759511 0.64594991 0.6397208 ]
+[0.07042926 0.18346292 0.37564805 0.87762906 0.02559871]
+[0.83707347 0.68878832 0.69812028 0.59070264 0.7337329
+```
+
+### Pandas
+
+```
+import pandas as pd
+import numpy as np
+from numpy.random import randn
+np.random.seed(101)
+df = pd.DataFrame(randn(5, 4), index='A B C D E'.split(), columns='W X Y Z'.split())
+print(df)
+          W         X         Y         Z
+A  2.706850  0.628133  0.907969  0.503826
+B  0.651118 -0.319318 -0.848077  0.605965
+C -2.018168  0.740122  0.528813 -0.589001
+D  0.188695 -0.758872 -0.933237  0.955057
+E  0.190794  1.978757  2.605967  0.683509
+```
+
 
 # 3. The Kata - Blackjack (Object Oriented)
 
